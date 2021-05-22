@@ -68,17 +68,42 @@ function jsonParse(json) {
     console.log(JSON.parse(json));
   } catch (error) {
     if (error instanceof SyntaxError) {
-      console.log('o arquivo file.json possui um erro de sintax');
-      //console.error(error.lineNumber);
-      //console.error(error.columnNumber);
-      //console.error(error.message);
-      //console.error(error.name);
-      //console.error(error.fileName);
-      //console.error(error.stack);
+      // console.log('o arquivo file.json possui um erro de sintax');
+      // //console.error(error.lineNumber);
+      // //console.error(error.columnNumber);
+      // //console.error(error.message);
+      // //console.error(error.name);
+      // //console.error(error.fileName);
+      // //console.error(error.stack);
     }
+    return;
   } finally {
     console.log('Stringify antes de parse: ', JSON.parse(JSON.stringify(json)));
   }
 }
 
 jsonParse(file);
+
+function retornaHora(data) {
+  if (data && !(data instanceof Date))
+    throw new TypeError('Esperando instancia de Date.');
+  if (!data) {
+    data = new Date();
+  }
+  return data.toLocaleTimeString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+}
+try {
+  const horaErrada = retornaHora(11);
+} catch (error) {
+  console.log('Lançou o erro:', error.message);
+} finally {
+  const novaData = new Date('01-01-1970 12:58:01');
+  const horaCorreta = retornaHora(novaData);
+  const horaAgora = retornaHora();
+  console.log('hora correta', horaCorreta);
+  console.log('hora agora', horaAgora);
+}
