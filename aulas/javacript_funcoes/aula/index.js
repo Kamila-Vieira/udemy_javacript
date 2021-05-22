@@ -100,7 +100,7 @@
 const limite = 10;
 
 function recursiva(max) {
-  console.log('função recursiva', max);
+  console.log("função recursiva", max);
   if (max >= limite) return; //limite
   max++; //acréscrimo
   recursiva(max); //laço
@@ -108,18 +108,18 @@ function recursiva(max) {
 recursiva(0); //inicio
 
 for (let max = 0; max <= limite; max++) {
-  console.log('laço for', max);
+  console.log("laço for", max);
 }
 
 //funções geradoras
 
 function* geradora1() {
   // Código
-  yield 'Valor 1';
+  yield "Valor 1";
   // Código
-  yield 'Valor 2';
+  yield "Valor 2";
   // Código
-  yield 'Valor 3';
+  yield "Valor 3";
 }
 
 const g1 = geradora1();
@@ -171,17 +171,17 @@ console.log(g4.next());
 
 function* geradora5() {
   yield function () {
-    console.log('Vim do yield 1');
+    console.log("Vim do yield 1");
   };
 
   // ...
   return function () {
-    console.log('Vim do return');
+    console.log("Vim do return");
   };
   // ...
 
   yield function () {
-    console.log('Vim do yield 2');
+    console.log("Vim do yield 2");
   };
 }
 
