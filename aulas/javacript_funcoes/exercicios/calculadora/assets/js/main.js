@@ -1,13 +1,13 @@
 // Com função construtora
 
 function Calculadora() {
-  this.display = document.querySelector('.display');
+  this.display = document.querySelector(".display");
   this.inicia = () => {
     this.clickBotoes();
     this.pressionaBotoes();
   };
   this.pressionaBotoes = () => {
-    document.addEventListener('keyup', (e) => {
+    document.addEventListener("keyup", (e) => {
       e.preventDefault();
       if (/[0-9-\.*\/\,\+()]/.test(e.key)) this.btnParaDisplay(e.key);
 
@@ -21,16 +21,16 @@ function Calculadora() {
   this.clickBotoes = () => {
     document.onclick = (e) => {
       const target = e.target;
-      if (target.classList.contains('btn-num')) {
+      if (target.classList.contains("btn-num")) {
         this.btnParaDisplay(target.innerText);
       }
-      if (target.classList.contains('btn-clear')) {
+      if (target.classList.contains("btn-clear")) {
         this.limpaDisplay();
       }
-      if (target.classList.contains('btn-del')) {
+      if (target.classList.contains("btn-del")) {
         this.apagarCaractere();
       }
-      if (target.classList.contains('btn-equal')) {
+      if (target.classList.contains("btn-equal")) {
         this.calculaValores();
       }
     };
@@ -40,26 +40,23 @@ function Calculadora() {
   };
 
   this.limpaDisplay = () => {
-    this.display.value = '';
+    this.display.value = "";
   };
   this.apagarCaractere = () => {
-    this.display.value = this.display.value.slice(
-      0,
-      this.display.value.length - 1,
-    );
+    this.display.value = this.display.value.slice(0, -1);
   };
   this.calculaValores = () => {
-    let conta = this.display.value.replace('x', '*');
+    let conta = this.display.value.replace("x", "*");
     try {
       conta = eval(conta);
       if (!conta) {
-        alert('Conta Inválida');
+        alert("Conta Inválida");
         this.limpaDisplay();
         return;
       }
       this.display.value = conta;
     } catch (error) {
-      alert('Conta Inválida');
+      alert("Conta Inválida");
       this.limpaDisplay();
       return;
     }
