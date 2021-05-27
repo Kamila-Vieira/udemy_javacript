@@ -39,6 +39,9 @@ function Pessoa(nome, sobrenome, idade) {
   this.nome = nome;
   this.sobrenome = sobrenome;
   this.idade = idade;
+  this.nomeCompleto = () => {
+    return `INTERNO: ${this.nome} ${this.sobrenome}`;
+  };
   this.dataDeNascimento = () => {
     const dataAtual = new Date();
     return dataAtual.getFullYear() - this.idade;
@@ -121,3 +124,63 @@ const produto2 = criaProduto("Camiseta");
 console.log(produto2.nome);
 produto2.nome = "Sabonete";
 console.log(produto2.nome);
+
+//Métodos uteis
+
+// Object.assign()
+// Object.defineProperties()
+// Object.defineProperty()
+// Object.freeze() // congela o objeto
+// Object.values() // array de valores
+// Object.keys() // array de propriedades
+// Object.entries() // arrays com chave e valor [chave, valor]
+//Object.getOwnPropertyDescriptor()
+
+const produto3 = new Produto("Sabão", 13.5, 14);
+
+const detergente = {
+  ...produto3, // spread
+  material: "glicerina",
+};
+const sabao2 = Object.assign({}, produto3, { material: "glicerina" });
+
+console.log(detergente);
+detergente.nome = "Detergente";
+console.log(detergente);
+console.log(sabao2);
+
+console.log("keys sabao2: ", Object.keys(sabao2));
+console.log("values sabao2: ", Object.values(sabao2));
+console.log("entries sabao2: ", Object.entries(sabao2));
+
+// Pega as configurações do Object.defineProperty()
+console.log(sabao2);
+console.log(
+  "getOwnPropertyDescriptor sabao2: ",
+  Object.getOwnPropertyDescriptor(sabao2, "estoque")
+);
+Object.defineProperty(sabao2, "estoque", {
+  writable: false,
+  configurable: false,
+  value: 34,
+});
+console.log(sabao2);
+console.log(
+  "getOwnPropertyDescriptor sabao2: ",
+  Object.getOwnPropertyDescriptor(sabao2, "estoque")
+);
+
+for (const [chave, valor] of Object.entries(sabao2)) {
+  console.log(chave, valor);
+}
+
+//Prototypes => molde do objeto (altera o objeto pai e consequentemente todas as sua instâncias)
+const pessoa1Prototypes = new Pessoa("Kamila", "Almeida", 23);
+Pessoa.prototype.nomeCompleto = () => {
+  return `Prototype: ${this.nome} ${this.sobrenome}`;
+};
+const pessoa2Prototypes = new Pessoa("José", "Silva", 43);
+console.log("pessoa1Prototypes", pessoa1Prototypes.nomeCompleto());
+console.log("pessoa2Prototypes", pessoa2Prototypes.nomeCompleto());
+// primeiro procura a função no molde proto, depois busca no objeto, por isso é o mostrado
+// Seguindo a cadeia: Pessoa ==> Pessoa.prototype --> Object.prototype
