@@ -184,3 +184,68 @@ console.log("pessoa1Prototypes", pessoa1Prototypes.nomeCompleto());
 console.log("pessoa2Prototypes", pessoa2Prototypes.nomeCompleto());
 // primeiro procura a função no molde proto, depois busca no objeto, por isso é o mostrado
 // Seguindo a cadeia: Pessoa ==> Pessoa.prototype --> Object.prototype
+
+//Object.prototype == Object.__proto__
+
+const objA = {
+  chaveA: "A",
+};
+const objB = {
+  chaveB: "B",
+};
+const objC = {
+  chaveC: "C",
+};
+
+// Object.setPrototypeOf seta um prototype de um objeto pra outro
+Object.setPrototypeOf(objB, objA);
+Object.setPrototypeOf(objC, objB);
+
+console.log(objB.chaveA);
+console.log(objC.chaveB);
+console.log(objC.chaveA);
+
+Produto.prototype.desconto = function (percentual) {
+  this.preco -= this.preco * (percentual / 100);
+};
+Produto.prototype.aumento = function (percentual) {
+  this.preco += this.preco * (percentual / 100);
+};
+
+const banana = new Produto("Banana", 4.2, 64);
+console.log(banana.preco);
+banana.desconto(50);
+console.log("50% de desconto (banana): ", banana.preco);
+banana.aumento(50);
+console.log("50% de aumento (banana): ", banana.preco);
+
+// Produto literal
+
+const mamao = {
+  nome: "Mamão",
+  preco: 2.3,
+};
+
+Object.setPrototypeOf(mamao, Produto.prototype);
+
+mamao.desconto(50);
+
+console.log("50% de desconto (mamao): ", mamao.preco);
+
+const manga = Object.create(Produto.prototype, {
+  nome: {
+    writable: true,
+    configurable: true,
+    enumerable: true,
+    value: "Manga",
+  },
+  preco: {
+    writable: true,
+    configurable: true,
+    enumerable: true,
+    value: 6.5,
+  },
+});
+manga.aumento(50);
+console.log("manga", manga);
+
