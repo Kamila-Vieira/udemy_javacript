@@ -249,3 +249,43 @@ const manga = Object.create(Produto.prototype, {
 manga.aumento(50);
 console.log("manga", manga);
 
+// Factory functions + Polimorfismo
+
+const falar = {
+  falar() {
+    console.log(`${this.nome} está falando.`);
+  },
+};
+const comer = {
+  comer() {
+    console.log(`${this.nome} está comendo.`);
+  },
+};
+const beber = {
+  beber() {
+    console.log(`${this.nome} está bebendo.`);
+  },
+};
+const dataDeNascimento = {
+  get dataDeNascimento() {
+    const dataAtual = new Date();
+    return dataAtual.getFullYear() - this.idade;
+  },
+};
+
+const pessoaPrototype = Object.assign({}, falar, comer, beber);
+//const pessoaPrototype = { ...falar, ...comer, ...beber };
+
+function criaPessoa2(nome, sobrenome, idade) {
+  return Object.create(pessoaPrototype, {
+    nome: { value: nome },
+    sobrenome: { value: sobrenome },
+    idade: { value: idade },
+  });
+}
+
+const pessoa2 = criaPessoa2("Kamila", "Almeida", 23);
+
+console.log(pessoa2.falar());
+console.log(pessoa2.comer());
+console.log(pessoa2.beber());
