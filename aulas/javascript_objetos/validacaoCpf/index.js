@@ -88,7 +88,7 @@ ValidaCpf.prototype.isSequencia = function () {
 
 const primeiroCpf = new ValidaCpf("872.407.380-76"); // Falso
 const segundoCpf = new ValidaCpf("160.791.740-81"); // Verdadeiro
-const terceiroCpf = new ValidaCpf("111.111.111-11"); // Verdadeiro
+const terceiroCpf = new ValidaCpf("111.111.111-11"); // Falso
 
 console.log(primeiroCpf);
 console.log(segundoCpf);
