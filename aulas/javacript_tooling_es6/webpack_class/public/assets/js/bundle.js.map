@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://webpack_class/./src/index.js"],"names":["console","log","nome"],"mappings":"AAIAA,QAAQC,IAFI,CAAEC,KAFD","file":"bundle.js","sourcesContent":["const nome = \"Kamila\";\r\n\r\nconst obj = { nome };\r\n\r\nconsole.log(obj);\r\n"],"sourceRoot":""}
