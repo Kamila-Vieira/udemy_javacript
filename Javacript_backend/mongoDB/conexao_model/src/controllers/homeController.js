@@ -1,11 +1,14 @@
 const HomeModel = require("../models/HomeModel");
 
+HomeModel.find()
+  .then((dados) => console.log(dados))
+  .catch((e) => console.log(e));
 // HomeModel.create({
 //   titulo: "Título teste",
 //   descricao: "Descrição teste",
 // })
-//   .then((dados) => console.log(dados))
-//   .catch((e) => console.log(e));
+// .then((dados) => console.log(dados))
+// .catch((e) => console.log(e));
 
 exports.paginaInicial = (req, res, next) => {
   res.render("index");
@@ -15,14 +18,14 @@ exports.paginaInicial = (req, res, next) => {
 };
 
 exports.enviaFormulario = (req, res, next) => {
-  const { titulo, descricao, cliente } = req.body;
-  HomeModel.create({
-    titulo,
-    descricao,
-    cliente,
-  })
-    .then((dados) => console.log(dados))
-    .catch((e) => console.log(e));
+  // const { titulo, descricao, cliente } = req.body;
+  // HomeModel.create({
+  //   titulo,
+  //   descricao,
+  //   cliente,
+  // })
+  //   .then((dados) => console.log(dados))
+  //   .catch((e) => console.log(e));
   res.render("index");
   next();
 };
