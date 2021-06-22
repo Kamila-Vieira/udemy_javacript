@@ -1,0 +1,12 @@
+<% Controle de fluxo (Lógica: if, for,...) %>
+Exemplo:
+<% if (algumaCoisa) { %>
+  <%= Exibe alguma coisa %>
+<% } else { %>
+  <%= Exibe outra coisa %>
+<% } %>
+
+<%= Exibe os caracteres exatamente como escrito %>
+<%- Exibe escapando caracteres %>
+<%# Comentário %>
+<%- include('caminho/arquivo') %> Importar partes do arquivo
