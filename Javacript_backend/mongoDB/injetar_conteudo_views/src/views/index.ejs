@@ -1,0 +1,25 @@
+<%- include('includes/head') %>
+
+  <section class="container">
+      <%= umaVariavelMiddleware %> <br>
+      <%= variavelMiddlewareSecundario %> <br>
+
+      <%= titulo %> <br> <%# Mais seguro de ser utilizado, exibe os caracteres exatamente como escrito %>
+      <%- titulo %>
+
+      <% if (typeof descricao !== 'undefined') { %>
+          <%= descricao %>
+        <% } else { %>
+          Descrição vazia
+      <% } %>
+
+      <br>
+
+      Números: 
+
+      <% numeros.forEach(num => { %>
+        <%= num %>,
+      <% }); %>
+  </section>
+
+  <%- include('includes/footer') %>
