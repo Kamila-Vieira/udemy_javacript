@@ -22,9 +22,10 @@ const csrf = require("csurf");
 const {
   checkCSFRError,
   csfrMiddleware,
+  errorMessages,
 } = require("./src/middlewares/middleware");
 
-app.use(helmet());
+//app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -50,6 +51,7 @@ app.use(csrf());
 
 app.use(checkCSFRError);
 app.use(csfrMiddleware);
+app.use(errorMessages);
 app.use(routes);
 
 app.on("pronto", () => {
