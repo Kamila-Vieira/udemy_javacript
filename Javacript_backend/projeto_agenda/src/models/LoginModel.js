@@ -22,8 +22,8 @@ class Login {
     try {
       this.user = await LoginModel.create(this.body);
     } catch (error) {
-      console.log(error);
       this.user = null;
+      console.log(error);
     }
   }
 

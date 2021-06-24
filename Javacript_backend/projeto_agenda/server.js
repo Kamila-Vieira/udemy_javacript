@@ -17,12 +17,12 @@ const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const routes = require("./routes");
 const path = require("path");
-const helmet = require("helmet");
+//const helmet = require("helmet");
 const csrf = require("csurf");
 const {
+  middlewareGlobal,
   checkCSFRError,
   csfrMiddleware,
-  errorMessages,
 } = require("./src/middlewares/middleware");
 
 //app.use(helmet());
@@ -31,7 +31,7 @@ app.use(express.json());
 
 app.use(express.static(path.resolve(__dirname, "public")));
 const sessionOptions = session({
-  secret: "123456789abc",
+  secret: process.env.SESSIONSECRET,
   store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
   resave: false,
   saveUninitialized: false,
@@ -49,9 +49,9 @@ app.set("view engine", "ejs");
 
 app.use(csrf());
 
+app.use(middlewareGlobal);
 app.use(checkCSFRError);
 app.use(csfrMiddleware);
-app.use(errorMessages);
 app.use(routes);
 
 app.on("pronto", () => {
