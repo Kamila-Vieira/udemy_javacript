@@ -1,0 +1,50 @@
+<%- include('includes/head') %>
+
+<title>Agenda - Contato</title>
+</head>
+<body>
+
+<%- include('includes/nav') %>
+
+  <article class="container">
+    <section class="row">
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-8 my-3">
+        <h1 class="text-center">Contato</h1>
+        <p class="text-center lead">Crie ou edite seu contato abaixo.</p>
+
+        <%- include('includes/messages') %>
+      <% if(contato._id){ %>
+        <form class="row g-3" action="/contato/edit/<%= contato._id %>" method="POST">
+      <% } else { %>
+        <form class="row g-3" action="/contato/register" method="POST">
+      <% } %>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" value="<%= contato.name %>" class="form-control" name="name">
+          </div>
+          <div class="form-group">
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" value="<%= contato.lastname %>" name="lastname">
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" class="form-control" value="<%= contato.email %>" placeholder="email@example.com" name="email">
+          </div>
+          <div class="form-group">
+            <label>Telefone</label>
+            <input type="phone" class="form-control" value="<%= contato.phone %>" placeholder="(11) 1111-1111" name="phone">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success col-2">Salvar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-2"></div>
+    </section>
+  </article>
+
+<%- include('includes/footer') %>

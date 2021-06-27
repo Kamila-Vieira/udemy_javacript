@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.4.1",
     "core-js": "^3.14.0",
@@ -22,6 +23,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
+    "js": "^0.1.0",
     "mongoose": "^5.12.14",
     "regenerator-runtime": "^0.13.7",
     "style-loader": "^2.0.0",
