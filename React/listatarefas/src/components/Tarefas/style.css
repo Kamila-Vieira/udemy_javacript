@@ -1,0 +1,53 @@
+.tarefas {
+  margin: 30px auto;
+  max-width: 80%;
+}
+
+.tarefa {
+  font-size: 16px;
+  margin: 0 auto 0 auto;
+  padding: 8px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.tarefa:hover {
+  background-color: #51c5de50;
+}
+
+.tarefa,
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button.edit,
+button.delete {
+  border: none;
+  width: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+button.edit {
+  color: #51c5de;
+}
+
+button.delete {
+  color: #f04c64;
+}
+
+button.edit:hover,
+button.edit:focus {
+  color: green;
+}
+
+button.delete:hover,
+button.delete:focus {
+  color: red;
+}
