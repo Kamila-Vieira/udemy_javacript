@@ -34,6 +34,8 @@ sudo docker run --restart always -d --name bdmariadb1 -p 3306:3306 \
 
 # LINUX (UBUNTU)
 sudo apt install mysql-workbench
+sudo apt-get install mysql-workbench
+
 sudo snap install insomnia
 
 # FAÇA O DOWNLOAD PARA WINDOWS
