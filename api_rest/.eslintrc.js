@@ -12,5 +12,6 @@ module.exports = {
     quotes: "off",
     "no-console": "off",
     "class-methods-use-this": "off",
+    "comma-dangle": "off",
   },
 };
