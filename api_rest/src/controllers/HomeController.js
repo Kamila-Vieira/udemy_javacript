@@ -1,20 +1,20 @@
 import Aluno from "../models/Aluno";
 
-class HomeControllwe {
+class HomeController {
   async index(req, res) {
     const novoAluno = await Aluno.create({
-      nome: "Maria",
+      nome: "Joao",
       sobrenome: "Souza",
-      email: "mariazinha@gmail.com",
-      idade: 53,
-      peso: 50.0,
-      altura: 1.46,
+      email: "joao@gmail.com",
+      idade: 29,
+      peso: 90.0,
+      altura: 1.87,
     });
     /* res.status(200).json({
       tudoCerto: true,
     }); */
-    res.json(novoAluno);
+    return res.json(novoAluno);
   }
 }
 
-export default new HomeControllwe();
+export default new HomeController();

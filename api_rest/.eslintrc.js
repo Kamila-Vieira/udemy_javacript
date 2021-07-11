@@ -13,5 +13,6 @@ module.exports = {
     "no-console": "off",
     "class-methods-use-this": "off",
     "comma-dangle": "off",
+    "no-param-reassign": "off",
   },
 };
