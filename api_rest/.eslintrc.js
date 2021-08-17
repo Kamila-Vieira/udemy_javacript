@@ -14,5 +14,7 @@ module.exports = {
     "class-methods-use-this": "off",
     "comma-dangle": "off",
     "no-param-reassign": "off",
+    "implicit-arrow-linebreak": "off",
+    camelcase: "off",
   },
 };
