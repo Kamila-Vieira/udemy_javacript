@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '../../../styles/GlobalStyles';
+import { Container } from '../../styles/GlobalStyles';
 import { Title, Paragraph } from './styled';
 
 function Login() {
@@ -14,6 +14,7 @@ function Login() {
         <small>is not Red</small>
       </Title>
       <Paragraph />
+      <button type="button">Enviar</button>
     </Container>
   );
 }
