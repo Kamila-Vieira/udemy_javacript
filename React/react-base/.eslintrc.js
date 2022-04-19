@@ -21,11 +21,12 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-no-undef': 'error',
-    'import/no-unresolved': { commonjs: true / false, amd: true / false },
+    'import/no-unresolved': 0,
     'react/jsx-filename-extension': 0,
     'linebreak-style': 0,
     'import/prefer-default-export': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'spaced-comment': 0,
   },
 };
