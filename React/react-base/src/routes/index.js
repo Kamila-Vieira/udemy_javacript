@@ -1,12 +1,14 @@
 import React from 'react';
 import { Route, Routes as BrowserRoutes } from 'react-router-dom';
+
 import Login from '../pages/login';
 import Page404 from '../pages/page404';
+//import MyRoute from './MyRoute';
 
 export default function Routes() {
   return (
     <BrowserRoutes>
-      <Route path="/" element={<Login />} />
+      <Route exact path="/" element={<Login />} />
       <Route path="*" element={<Page404 />} />
     </BrowserRoutes>
   );

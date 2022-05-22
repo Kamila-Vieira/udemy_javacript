@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { primaryColor, primaryDarkColor } from '../config/colors';
+import * as colors from '../config/colors';
 
 export default createGlobalStyle`
   * {
@@ -11,8 +11,8 @@ export default createGlobalStyle`
 
   body{
     font-size: sans-serif;
-    background-color: ${primaryDarkColor};
-    color: ${primaryColor};
+    background-color: ${colors.primaryDarkColor};
+    color: ${colors.primaryColor};
   }
 
   html, body, #root{
@@ -21,7 +21,7 @@ export default createGlobalStyle`
 
   button{
     cursor: pointer;
-    background-color: ${primaryColor};
+    background-color: ${colors.primaryColor};
     border: none;
     color: #fff;
     padding: 10px 20px;
@@ -31,12 +31,36 @@ export default createGlobalStyle`
 
   a{
     text-decoration: none;
-    color: ${primaryColor};
+    color: ${colors.primaryColor};
   }
 
   ul{
     list-style: none;
   }
+
+  body .Toastify .Toastify__toast-container {
+    .Toastify__toast {
+      color: #ffffff;
+
+      .Toastify__toast-icon svg {
+        fill:  #ffffff;
+      }
+      .Toastify__progress-bar{
+        background-color:  #ffffff;
+      }
+      .Toastify__close-button {
+        color: #ffffff;
+        opacity: 1;
+      }
+      &--success{
+        background-color: ${colors.successColor};
+      }
+      &--error{
+        background-color: ${colors.errorColor};
+      }
+    }
+  }
+
 `;
 
 export const Container = styled.section`
