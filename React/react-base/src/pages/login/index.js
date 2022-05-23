@@ -1,11 +1,22 @@
-import React from 'react';
-import { toast } from 'react-toastify';
+import React, { useEffect } from 'react';
+// import { toast } from 'react-toastify';
 import { Container } from '../../styles/GlobalStyles';
 import { Title, Paragraph } from './styled';
+import axios from '../../services/axios';
 
 function Login() {
-  toast.success('Oiiiiii', { toastId: 'toastSuccess' });
-  toast.error('Oiiiiii', { toastId: 'toastError' });
+  // toast.success('Oiiiiii', { toastId: 'toastSuccess' });
+  // toast.error('Oiiiiii', { toastId: 'toastError' });
+
+  useEffect(() => {
+    async function getData() {
+      const { data } = await axios.get('/alunos');
+
+      console.log(data);
+    }
+
+    getData();
+  }, []);
 
   return (
     <Container>
