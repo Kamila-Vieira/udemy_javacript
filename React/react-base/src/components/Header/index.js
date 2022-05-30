@@ -1,9 +1,14 @@
 import React from 'react';
 import { FaHome, FaSignInAlt, FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import { Nav } from './styles';
 
 export default function Header() {
+  const { botaoClicado } = useSelector((state) => state.exampleReducer);
+  console.log(botaoClicado);
+
   return (
     <Nav>
       <Link to="/">
