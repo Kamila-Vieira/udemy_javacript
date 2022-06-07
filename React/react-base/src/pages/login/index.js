@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
 import { Container } from '../../styles/GlobalStyles';
 import { Title, Paragraph } from './styled';
-import axios from '../../services/axios';
 import * as exempleActions from '../../store/modules/example/actions';
+// import { toast } from 'react-toastify';
+//import axios from '../../services/axios';
 
 function Login() {
   const dispatch = useDispatch();
   // toast.success('Oiiiiii', { toastId: 'toastSuccess' });
   // toast.error('Oiiiiii', { toastId: 'toastError' });
 
-  useEffect(() => {
-    async function getData() {
-      const { data } = await axios.get('/alunos');
+  // useEffect(() => {
+  //   async function getData() {
+  //     const { data } = await axios.get('/alunos');
 
-      console.log(data);
-    }
+  //     console.log(data);
+  //   }
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
 
   const handleClick = (e) => {
     e.preventDefault();
