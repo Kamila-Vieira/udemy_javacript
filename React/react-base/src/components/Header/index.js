@@ -3,7 +3,7 @@ import { FaHome, FaSignInAlt, FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { Nav } from './styles';
+import { Nav, Strong } from './styles';
 
 export default function Header() {
   const { botaoClicado } = useSelector((state) => state.exampleReducer);
@@ -11,6 +11,7 @@ export default function Header() {
 
   return (
     <Nav>
+      <Strong>{botaoClicado ? 'Botão clicado' : 'Botão não clicado'}</Strong>
       <Link to="/">
         <FaHome size={24} />
       </Link>

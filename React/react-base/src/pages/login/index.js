@@ -23,7 +23,7 @@ function Login() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(exempleActions.clicaBotao());
+    dispatch(exempleActions.clicaBotaoRequest());
   };
 
   return (
