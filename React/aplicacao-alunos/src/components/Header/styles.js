@@ -14,7 +14,3 @@ export const Nav = styled.nav`
     font-weight: bold;
   }
 `;
-
-export const Strong = styled.strong`
-  color: red;
-`;
