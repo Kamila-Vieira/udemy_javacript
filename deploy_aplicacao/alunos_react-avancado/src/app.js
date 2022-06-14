@@ -1,6 +1,7 @@
 /* eslint-disable import/first */
 import dotenv from "dotenv";
 import { resolve } from "path";
+import cors from "cors";
 
 dotenv.config();
 
@@ -21,6 +22,11 @@ class App {
   }
 
   middlewares() {
+    this.app.use(
+      cors({
+        origin: "*",
+      })
+    );
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(express.static(resolve(__dirname, "uploads")));
