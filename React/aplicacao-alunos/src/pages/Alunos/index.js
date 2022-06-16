@@ -23,21 +23,25 @@ function Alunos() {
       <AlunoContainer>
         {alunos.map((aluno) => (
           <div key={String(aluno.id)}>
-            <ProfilePicture>
-              {get(aluno, 'Fotos[0].url', false) ? (
-                <img src={aluno.Fotos[0].url} alt={aluno.nome} />
-              ) : (
-                <FaUserCircle size={36} />
-              )}
-            </ProfilePicture>
-            <span>{aluno.nome}</span>
-            <span>{aluno.email}</span>
-            <Link to={`/aluno/${aluno.id}/edit`}>
-              <FaEdit />
-            </Link>
-            <Link to={`/aluno/${aluno.id}/delete`}>
-              <FaWindowClose />
-            </Link>
+            <div>
+              <ProfilePicture>
+                {get(aluno, 'Fotos[0].url', false) ? (
+                  <img src={aluno.Fotos[0].url} alt={aluno.nome} />
+                ) : (
+                  <FaUserCircle size={36} />
+                )}
+              </ProfilePicture>
+              <span>{aluno.nome}</span>
+              <span>{aluno.email}</span>
+            </div>
+            <div>
+              <Link to={`/aluno/${aluno.id}/edit`}>
+                <FaEdit />
+              </Link>
+              <Link to={`/aluno/${aluno.id}/delete`}>
+                <FaWindowClose />
+              </Link>
+            </div>
           </div>
         ))}
       </AlunoContainer>

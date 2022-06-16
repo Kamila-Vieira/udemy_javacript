@@ -1,19 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.h1`
-  color: ${(props) => (props.isRed ? 'red' : 'black')};
-
-  small {
-    font-size: 12px;
-    margin-left: 15px;
-    color: gray;
-  }
-`;
-
-export const Paragraph = styled.p`
-  background-color: blue;
-`;
-
 export const AlunoContainer = styled.div`
   margin-top: 20px;
 
@@ -22,6 +8,28 @@ export const AlunoContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 5px 0;
+    & > div {
+      &:first-child {
+        display: flex;
+        align-items: center;
+        span {
+          margin-left: 20px;
+          font-weight: bold;
+
+          &:first-of-type {
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      &:last-child {
+        display: flex;
+        align-items: center;
+        a {
+          margin-right: 10px;
+        }
+      }
+    }
 
     & + div {
       border-top: 1px solid #eee;
