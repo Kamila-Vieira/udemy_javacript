@@ -34,5 +34,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'spaced-comment': 0,
     'react/jsx-props-no-spreading': 0,
+    'no-console': 0,
+    'func-names': 0,
   },
 };
