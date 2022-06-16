@@ -13,7 +13,7 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handlerSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let hasFormErrors = false;
 
@@ -57,7 +57,7 @@ function Register() {
     <Container>
       <h1>Crie sua conta</h1>
 
-      <Form onSubmit={handlerSubmit}>
+      <Form onSubmit={handleSubmit}>
         <label htmlFor="nome">
           Nome:
           <input

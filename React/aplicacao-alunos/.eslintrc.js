@@ -24,8 +24,8 @@ module.exports = {
   },
   plugins: ['react', 'prettier', 'react-hooks', 'import', 'jsx-a11y'],
   rules: {
-    'prettier/prettier': 'error',
-    'react/jsx-no-undef': 'error',
+    'prettier/prettier': 'warn',
+    'react/jsx-no-undef': 'warn',
     'import/no-unresolved': 0,
     'react/jsx-filename-extension': 0,
     'linebreak-style': 0,
@@ -35,6 +35,8 @@ module.exports = {
     'spaced-comment': 0,
     'react/jsx-props-no-spreading': 0,
     'no-console': 0,
-    'func-names': 0,
+    'no-unused-vars': 'warn',
+    'no-empty-function': 'warn',
+    'func-names': 'warn',
   },
 };
