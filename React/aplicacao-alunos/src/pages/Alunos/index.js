@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { get } from 'lodash';
 import { FaEdit, FaWindowClose, FaExclamationCircle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ProfilePicture from '../../components/ProfilePicture';
 import { Container } from '../../styles/GlobalStyles';
@@ -11,6 +11,7 @@ import { AlunoContainer } from './styled';
 import * as colors from '../../config/colors';
 
 function Alunos() {
+  const navigate = useNavigate();
   const [alunos, setAlunos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,15 +33,25 @@ function Alunos() {
 
   const handleDelete = async (e, id, index) => {
     e.persist();
-
     try {
+      setIsLoading(true);
       await axios.delete(`/alunos/${id}`);
       const novosAlunos = [...alunos];
       novosAlunos.splice(index, 1);
-      await setAlunos(novosAlunos);
+      setAlunos(novosAlunos);
+      toast.success('Aluno deletado com sucesso!');
+      setIsLoading(false);
     } catch (error) {
-      const errors = get(error, 'response.data.errors', []);
-      errors.map((err) => toast.error(err));
+      const status = get(error, 'response.status', 0);
+
+      if (status === 401) {
+        toast.error('Você precisa fazer login!');
+        //navigate('/login');
+      } else {
+        toast.error('Ocorreu um erro ao tentar excluir o aluno');
+      }
+
+      setIsLoading(false);
     }
   };
 
