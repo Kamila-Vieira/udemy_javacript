@@ -25,13 +25,18 @@ class TokenController {
         });
       }
 
-      const { id } = user;
+      const { id, nome } = user;
 
       const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
         expiresIn: process.env.TOKEN_EXPIRATION,
       });
 
-      return res.json({ token });
+      return res.json({
+        id,
+        email,
+        nome,
+        token,
+      });
     } catch (error) {
       return res.status(400).json({
         errors: error.errors.map((err) => err.message),
