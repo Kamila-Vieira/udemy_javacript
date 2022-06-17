@@ -9,8 +9,8 @@ router.get("/", userController.index); // lista todos os usuarios
 // router.get("/:id", userController.show); // mostra um usuario
 
 router.post("/", userController.store);
-router.put("/:id?", loginRequired, userController.update);
-router.delete("/:id?", loginRequired, userController.delete);
+router.put("/", loginRequired, userController.update);
+router.delete("/", loginRequired, userController.delete);
 
 export default router;
 

@@ -32,9 +32,11 @@ class TokenController {
       });
 
       return res.json({
-        id,
-        email,
-        nome,
+        user: {
+          id,
+          nome,
+          email,
+        },
         token,
       });
     } catch (error) {
