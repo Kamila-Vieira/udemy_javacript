@@ -12,12 +12,28 @@ export const AlunoContainer = styled.div`
       &:first-child {
         display: flex;
         align-items: center;
-        span {
-          margin-left: 20px;
-          font-weight: bold;
 
-          &:first-of-type {
-            text-transform: capitalize;
+        & > div:last-child {
+          display: flex;
+          align-items: center;
+
+          span {
+            margin-left: 20px;
+            font-weight: bold;
+
+            &:first-of-type {
+              text-transform: capitalize;
+            }
+          }
+
+          @media (max-width: 460px) {
+            align-items: flex-start;
+            flex-direction: column;
+            margin-left: 10px;
+
+            span {
+              margin-left: 0;
+            }
           }
         }
       }

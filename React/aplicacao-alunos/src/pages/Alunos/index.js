@@ -35,8 +35,10 @@ function Alunos() {
                 name={aluno.nome}
                 url={get(aluno, 'Fotos[0].url', '')}
               />
-              <span>{aluno.nome}</span>
-              <span>{aluno.email}</span>
+              <div>
+                <span>{aluno.nome}</span>
+                <span>{aluno.email}</span>
+              </div>
             </div>
             <div>
               <Link to={`/aluno/${aluno.id}/edit`}>

@@ -77,7 +77,7 @@ export const Container = styled.section`
   border-radius: 6px;
   background-color: #fff;
 
-  @media (max-width: 1250px) {
+  @media (max-width: 530px) {
     margin: 15px;
   }
 `;
