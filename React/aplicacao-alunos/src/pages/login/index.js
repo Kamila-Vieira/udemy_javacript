@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { useDispatch } from 'react-redux';
-import { get } from 'lodash';
+import { useNavigate } from 'react-router-dom';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
-import axios from '../../services/axios';
 import * as actions from '../../store/modules/auth/actions';
 
 function Login() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,21 +32,8 @@ function Login() {
     }
 
     if (hasFormErrors) return;
-
-    try {
-      //const response = await axios.post('/tokens', { email, password });
-
-      //console.log(response);
-
-      // toast.success('Cadastro realizado com sucesso!', {
-      //   onClose: () => navigate('/login'),
-      // });
-      dispatch(actions.loginRequest({ email, password }));
-    } catch (error) {
-      const status = get(error, 'response.status', 0);
-      const errors = get(error, 'response.data.errors', []);
-      if (status === 400) errors.map((err) => toast.error(err));
-    }
+    dispatch(actions.loginRequest({ email, password }));
+    navigate('/');
   };
 
   return (

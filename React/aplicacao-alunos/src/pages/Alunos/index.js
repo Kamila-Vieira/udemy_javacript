@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { get } from 'lodash';
-import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
+import { FaEdit, FaWindowClose } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import ProfilePicture from '../../components/ProfilePicture';
 import { Container } from '../../styles/GlobalStyles';
 import axios from '../../services/axios';
-import { AlunoContainer, ProfilePicture } from './styled';
+import { AlunoContainer } from './styled';
 
 function Alunos() {
   const [alunos, setAlunos] = useState([]);
@@ -24,13 +25,10 @@ function Alunos() {
         {alunos.map((aluno) => (
           <div key={String(aluno.id)}>
             <div>
-              <ProfilePicture>
-                {get(aluno, 'Fotos[0].url', false) ? (
-                  <img src={aluno.Fotos[0].url} alt={aluno.nome} />
-                ) : (
-                  <FaUserCircle size={36} />
-                )}
-              </ProfilePicture>
+              <ProfilePicture
+                name={aluno.nome}
+                url={get(aluno, 'Fotos[0].url', '')}
+              />
               <span>{aluno.nome}</span>
               <span>{aluno.email}</span>
             </div>

@@ -1,13 +1,9 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function PrivateRoute() {
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  return isLoggedIn ? (
-    <Outlet />
-  ) : (
-    // eslint-disable-next-line no-restricted-globals
-    <Navigate to="/login" replace />
-  );
+  return isLoggedIn ? <Outlet /> : <Navigate to="/login" replace />;
 }
