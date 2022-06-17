@@ -17,7 +17,7 @@ import alunoRoutes from "./routes/alunoRoutes";
 import fotoRoutes from "./routes/fotoRoutes";
 
 const corsWhiteList = [
-  "https://udemy-alunos.up.railway.app/",
+  "https://udemy-alunos.up.railway.app",
   "http://localhost:3000",
 ];
 
