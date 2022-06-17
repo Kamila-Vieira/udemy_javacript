@@ -14,3 +14,7 @@ export const Nav = styled.nav`
     font-weight: bold;
   }
 `;
+
+export const LoggedInHighlight = styled.div`
+  margin-left: 10px;
+`;
