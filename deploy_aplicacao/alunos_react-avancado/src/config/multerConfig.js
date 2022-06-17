@@ -1,7 +1,7 @@
 import multer from "multer";
 import { extname, resolve } from "path";
 
-const aleatorio = () => Math.floor(Math.random() * 10000 + 10000);
+const aleatorio = () => Math.floor(Math.random() * Number(new Date()) + 10000);
 
 export default {
   fileFilter: (req, file, callback) => {
