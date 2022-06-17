@@ -1,3 +1,24 @@
 import styled from 'styled-components';
 
-export const Paragraph = styled.p``;
+export const Form = styled.form`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    height: 40px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+
+    &[type='number'] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+
+      ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+`;

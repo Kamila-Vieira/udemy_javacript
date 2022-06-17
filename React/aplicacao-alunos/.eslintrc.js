@@ -40,5 +40,6 @@ module.exports = {
     'func-names': 'warn',
     'react/jsx-no-useless-fragment': 'warn',
     'no-useless-return': 'warn',
+    'react/prop-types': 'warn',
   },
 };

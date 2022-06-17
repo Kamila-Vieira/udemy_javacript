@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { get } from 'lodash';
 import { FaEdit, FaWindowClose, FaExclamationCircle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ProfilePicture from '../../components/ProfilePicture';
 import { Container } from '../../styles/GlobalStyles';
 import axios from '../../services/axios';
 import Loading from '../../components/Loading';
-import { AlunoContainer } from './styled';
+import { AlunoContainer, NovoAluno } from './styled';
 import * as colors from '../../config/colors';
 
 function Alunos() {
-  const navigate = useNavigate();
   const [alunos, setAlunos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -60,6 +59,8 @@ function Alunos() {
       <Loading isLoading={isLoading} />
 
       <h1>Alunos</h1>
+
+      <NovoAluno to="/aluno/">Novo aluno</NovoAluno>
 
       <AlunoContainer>
         {alunos.length > 0 ? (
