@@ -41,9 +41,7 @@ export const AlunoContainer = styled.div`
       &:last-child {
         display: flex;
         align-items: center;
-        a {
-          margin-right: 10px;
-        }
+        column-gap: 10px;
       }
     }
 
