@@ -38,5 +38,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'no-empty-function': 'warn',
     'func-names': 'warn',
+    'react/jsx-no-useless-fragment': 'warn',
   },
 };

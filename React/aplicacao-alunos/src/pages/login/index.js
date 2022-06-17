@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import * as actions from '../../store/modules/auth/actions';
+import Loading from '../../components/Loading';
 
 function Login() {
+  const isLoading = useSelector((state) => state.auth.isLoading);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -32,12 +34,14 @@ function Login() {
     }
 
     if (hasFormErrors) return;
-    dispatch(actions.loginRequest({ email, password }));
-    navigate('/');
+
+    dispatch(actions.loginRequest({ email, password, navigate }));
   };
 
   return (
     <Container>
+      <Loading isLoading={isLoading} />
+
       <h1>Login</h1>
       <Form onSubmit={handleSubmit}>
         <input

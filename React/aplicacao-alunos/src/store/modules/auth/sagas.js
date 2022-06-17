@@ -16,6 +16,7 @@ function* loginRequest({ payload }) {
     axios.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
     toast.success('Você fez login com sucesso!');
+    payload.navigate('/');
   } catch (error) {
     toast.error('Usuário ou senha inválidos');
 

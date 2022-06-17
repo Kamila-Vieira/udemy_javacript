@@ -6,12 +6,14 @@ import { get } from 'lodash';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import axios from '../../services/axios';
+import Loading from '../../components/Loading';
 
 function Register() {
   const navigate = useNavigate();
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,21 +42,25 @@ function Register() {
 
     if (hasFormErrors) return;
 
+    setIsLoading(true);
     try {
       await axios.post('/users', { nome, email, password });
 
-      toast.success('Cadastro realizado com sucesso!', {
-        onClose: () => navigate('/login'),
-      });
+      toast.success('Cadastro realizado com sucesso!');
+      setIsLoading(false);
+      navigate('/login');
     } catch (error) {
       const status = get(error, 'response.status', 0);
       const errors = get(error, 'response.data.errors', []);
       if (status === 400) errors.map((err) => toast.error(err));
+      setIsLoading(false);
     }
   };
 
   return (
     <Container>
+      <Loading isLoading={isLoading} />
+
       <h1>Crie sua conta</h1>
 
       <Form onSubmit={handleSubmit}>

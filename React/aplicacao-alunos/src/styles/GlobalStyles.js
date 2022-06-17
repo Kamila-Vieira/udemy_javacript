@@ -70,11 +70,11 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.section`
-  max-width: 1024px;
+  max-width: 500px;
   margin: 15px auto;
   padding: 15px;
   border: 1px solid;
-  border-radius: 16px;
+  border-radius: 6px;
   background-color: #fff;
 
   @media (max-width: 1250px) {
