@@ -60,7 +60,7 @@ function Alunos() {
 
       <h1>Alunos</h1>
 
-      <NovoAluno to="/aluno/">Novo aluno</NovoAluno>
+      <NovoAluno to="/aluno">Novo aluno</NovoAluno>
 
       <AlunoContainer>
         {alunos.length > 0 ? (

@@ -56,8 +56,6 @@ function Register() {
 
     if (hasFormErrors) return;
 
-    console.log(email, loggedUserEmail);
-
     dispatch(
       actions.registerRequest({
         nome,

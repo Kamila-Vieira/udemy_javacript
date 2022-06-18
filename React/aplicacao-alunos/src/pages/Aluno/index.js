@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { get } from 'lodash';
+import { FaEdit } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 import { isEmail, isInt, isFloat } from 'validator';
 import { Container } from '../../styles/GlobalStyles';
 import axios from '../../services/axios';
+import { loginFailure } from '../../store/modules/auth/actions';
 import Loading from '../../components/Loading';
-import { Form } from './styled';
+import ProfilePicture from '../../components/ProfilePicture';
+import { Form, ProfilePictureEdit, Title } from './styled';
 
 function Aluno() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [nome, setNome] = useState('');
+  const [foto, setFoto] = useState('');
   const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
   const [idade, setIdade] = useState('');
@@ -20,29 +28,39 @@ function Aluno() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (id) {
-      (async () => {
-        try {
-          setIsLoading(true);
-          const getData = await axios.get(`/alunos/${id}`);
-          setNome(getData?.data?.nome || '');
-          setSobrenome(getData?.data?.sobrenome || '');
-          setEmail(getData?.data?.email || '');
-          setIdade(getData?.data?.idade || '');
-          setPeso(getData?.data?.peso || '');
-          setAltura(getData?.data?.altura || '');
-          setIsLoading(false);
-        } catch (error) {
-          console.log(error);
-        }
-      })();
-    }
-  }, [id]);
+    if (!id) return;
+    (async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(`/alunos/${id}`);
+        setFoto(get(data, 'Fotos[0].url', ''));
+        setNome(data?.nome || '');
+        setSobrenome(data?.sobrenome || '');
+        setEmail(data?.email || '');
+        setIdade(data?.idade || '');
+        setPeso(data?.peso || '');
+        setAltura(data?.altura || '');
+        setIsLoading(false);
+      } catch (error) {
+        const errors = get(error, 'response.data.errors', []);
+        const status = get(error, 'response.status', 0);
 
-  const handleSubmit = (e) => {
+        if (status === 400) {
+          errors.map((err) => toast.error(err));
+        } else {
+          toast.error('Erro desconhecido');
+        }
+
+        navigate('/');
+      }
+    })();
+  }, [id, navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let hasFormErrors = false;
+
     if (nome.length < 3 || nome.length > 255) {
       hasFormErrors = true;
       toast.error('O nome deve ter entre 3 e 255 caracteres', {
@@ -88,20 +106,60 @@ function Aluno() {
       );
     }
 
-    console.log({
+    if (hasFormErrors) return;
+
+    const alunoData = {
       nome,
       sobrenome,
       idade: Number(idade),
       email,
       peso: Number(peso),
       altura: Number(altura),
-    });
+    };
+
+    try {
+      setIsLoading(true);
+      if (id) {
+        await axios.put(`/alunos/${id}`, { ...alunoData });
+        toast.success('Aluno(a) alterado(a) com sucesso');
+        navigate('/');
+      } else {
+        const { data } = await axios.post(`/alunos`, { ...alunoData });
+        toast.success('Aluno(a) criado(a) com sucesso');
+        navigate(`/aluno/${data.id}/edit`);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      const status = get(error, 'response.status', 0);
+      const data = get(error, 'response.data', {});
+      const errors = get(data, 'errors', []);
+
+      if (errors.length > 0) {
+        errors.map((err) => toast.error(err));
+      } else {
+        toast.error('Erro desconhecido');
+      }
+
+      if (status === 401) {
+        toast.error('Você precisa fazer login');
+        dispatch(loginFailure());
+      }
+    }
   };
 
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      <h1>{id ? `Editar aluno ${nome}` : 'Novo aluno'}</h1>
+      <Title>{id ? `Editar aluno` : 'Novo aluno'}</Title>
+
+      {id && (
+        <ProfilePictureEdit>
+          <ProfilePicture url={foto} name={nome} size={180} />
+          <Link to={`/fotos/aluno_id=${id}`}>
+            <FaEdit />
+          </Link>
+        </ProfilePictureEdit>
+      )}
 
       <Form onSubmit={handleSubmit}>
         <input
@@ -140,7 +198,6 @@ function Aluno() {
           onChange={(e) => setAltura(e.target.value)}
           placeholder="Altura"
         />
-
         <button type="submit">Enviar dados</button>
       </Form>
     </Container>

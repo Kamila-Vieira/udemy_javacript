@@ -1,28 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { Container } from './styled';
 
-export default function ProfilePicture({ url, name }) {
-  const [isValidImage, setIsValidImage] = useState(!!url);
+export default function ProfilePicture({ url, name, size }) {
+  const [isValidImage, setIsValidImage] = useState(true);
+
+  useEffect(() => {
+    setIsValidImage(!!url);
+  }, [url]);
 
   return (
-    <Container>
+    <Container size={size}>
       {isValidImage ? (
         <img
           src={url}
-          crossOrigin="*"
+          crossOrigin="anonymous"
           alt={name}
           onError={() => setIsValidImage(false)}
         />
       ) : (
-        <FaUserCircle size={36} />
+        <FaUserCircle size={size} />
       )}
     </Container>
   );
 }
 
+ProfilePicture.defaultProps = {
+  size: 36,
+};
+
 ProfilePicture.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  size: PropTypes.number,
 };

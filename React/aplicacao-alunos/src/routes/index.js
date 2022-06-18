@@ -21,7 +21,7 @@ export default function Routes() {
       <Route element={<PrivateRoute />}>
         <Route path="/aluno/:id/edit" element={<Aluno />} />
         <Route path="/aluno" element={<Aluno />} />
-        <Route path="/fotos/:id" element={<Fotos />} />
+        <Route path="/fotos/aluno_id=:id" element={<Fotos />} />
       </Route>
     </BrowserRoutes>
   );
