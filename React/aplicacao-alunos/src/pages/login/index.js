@@ -8,7 +8,7 @@ import { Form } from './styled';
 import * as actions from '../../store/modules/auth/actions';
 import Loading from '../../components/Loading';
 
-function Login() {
+export default function Login() {
   const isLoading = useSelector((state) => state.auth.isLoading);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -61,5 +61,3 @@ function Login() {
     </Container>
   );
 }
-
-export default Login;
