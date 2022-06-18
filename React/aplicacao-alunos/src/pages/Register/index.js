@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { useSelector, useDispatch } from 'react-redux';
+import { FaExclamationCircle } from 'react-icons/fa';
 import Loading from '../../components/Loading';
 import { Container } from '../../styles/GlobalStyles';
-import { Form } from './styled';
+import { Form, ConfirmDelete, DeleteUserAsk } from './styled';
 
 import * as actions from '../../store/modules/register/actions';
+import { deleteRequest } from '../../store/modules/deleteUser/actions';
+import * as colors from '../../config/colors';
 
 function Register() {
   const navigate = useNavigate();
@@ -17,10 +20,12 @@ function Register() {
   const loggedUserName = useSelector((state) => state.auth.user?.nome);
   const loggedUserEmail = useSelector((state) => state.auth.user?.email);
   const isLoading = useSelector((state) => state.register.isLoading);
+  const isDeleting = useSelector((state) => state.deleteUser.isLoading);
 
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   useEffect(() => {
     if (!loggedUserId) return;
@@ -68,9 +73,14 @@ function Register() {
     );
   };
 
+  const handleDeleteUser = async (e) => {
+    e.preventDefault();
+    dispatch(deleteRequest({ navigate }));
+  };
+
   return (
     <Container>
-      <Loading isLoading={isLoading} />
+      <Loading isLoading={isLoading || isDeleting} />
 
       <h1>{loggedUserId ? 'Editar Conta' : 'Crie sua conta'}</h1>
 
@@ -107,6 +117,38 @@ function Register() {
           {loggedUserId ? 'Salvar dados' : 'Criar minha conta'}
         </button>
       </Form>
+
+      {loggedUserId && (
+        <>
+          <ConfirmDelete hidden={!confirmDelete}>
+            <strong>
+              Você tem certeza que deseja prosseguir, esta ação é irreversível?
+              <FaExclamationCircle
+                color={colors.warningColor}
+                cursor="pointer"
+                size={14}
+              />
+            </strong>
+
+            <div>
+              <button type="button" onClick={handleDeleteUser}>
+                Sim
+              </button>
+              <button type="button" onClick={() => setConfirmDelete(false)}>
+                Não
+              </button>
+            </div>
+          </ConfirmDelete>
+
+          <DeleteUserAsk
+            type="button"
+            onClick={() => setConfirmDelete(true)}
+            hidden={confirmDelete}
+          >
+            Deletar conta
+          </DeleteUserAsk>
+        </>
+      )}
     </Container>
   );
 }
