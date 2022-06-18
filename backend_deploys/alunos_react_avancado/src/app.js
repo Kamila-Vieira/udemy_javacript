@@ -18,6 +18,7 @@ import fotoRoutes from "./routes/fotoRoutes";
 
 const corsWhiteList = [
   "https://udemy-alunos.up.railway.app",
+  "https://udemy-course-studentsapp.netlify.app",
   "http://localhost:3000",
 ];
 
