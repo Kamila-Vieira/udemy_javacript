@@ -18,7 +18,7 @@ function Aluno() {
   const dispatch = useDispatch();
 
   const [nome, setNome] = useState('');
-  const [foto, setFoto] = useState('');
+  const [fotos, setFotos] = useState([]);
   const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
   const [idade, setIdade] = useState('');
@@ -33,7 +33,7 @@ function Aluno() {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/alunos/${id}`);
-        setFoto(get(data, 'Fotos[0].url', ''));
+        setFotos(get(data, 'Fotos', []));
         setNome(data?.nome || '');
         setSobrenome(data?.sobrenome || '');
         setEmail(data?.email || '');
@@ -154,7 +154,7 @@ function Aluno() {
 
       {id && (
         <ProfilePictureEdit>
-          <ProfilePicture url={foto} name={nome} size={180} />
+          <ProfilePicture urls={fotos} name={nome} size={180} />
           <Link to={`/fotos/aluno_id=${id}`}>
             <FaEdit />
           </Link>

@@ -69,7 +69,7 @@ function Alunos() {
               <div>
                 <ProfilePicture
                   name={aluno.nome}
-                  url={get(aluno, 'Fotos[0].url', '')}
+                  urls={get(aluno, 'Fotos', [])}
                 />
                 <div>
                   <span>{aluno.nome}</span>
