@@ -8,9 +8,9 @@ export const theme = {
     darkGray: '#333333',
   },
   spacings: {
-    small: '1rem',
-    medium: '2rem',
-    large: '3rem',
+    small: '16px',
+    medium: '32px',
+    large: '48px',
   },
   font: {
     sizes: {
