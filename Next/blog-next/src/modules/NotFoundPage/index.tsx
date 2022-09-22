@@ -1,7 +1,7 @@
-import { Main } from '../../components/Main';
+import { Main } from '../Main';
 import { Container, Strong, Text } from './styles';
 
-export default function NotFoundContent() {
+export function NotFoundPage() {
   return (
     <Main>
       <Container>

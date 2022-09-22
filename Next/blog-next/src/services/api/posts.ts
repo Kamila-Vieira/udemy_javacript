@@ -1,6 +1,6 @@
-import { POSTS_URL } from '../config';
-import type { AllPostsData } from '../@types/posts';
-import { fetchJson } from '../utils/fetchJson';
+import { POSTS_URL } from '../../config';
+import type { AllPostsData } from '../../@types/posts';
+import { fetchJson } from '../../utils/fetchJson';
 
 export async function getAllPosts(query = ''): Promise<AllPostsData> {
   const searchURL = `${POSTS_URL}${query}`;

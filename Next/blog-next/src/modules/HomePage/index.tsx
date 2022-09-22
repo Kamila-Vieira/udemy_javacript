@@ -1,6 +1,6 @@
 import type { HomePageProps } from './types';
 import { Container } from './styles';
-import { Main } from '../../components/Main';
+import { Main } from '../Main';
 import { PostCard } from '../../components/PostCard';
 
 export function HomePage({ posts }: HomePageProps) {

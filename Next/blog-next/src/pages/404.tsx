@@ -1,5 +1,5 @@
-import NotFoundContent from '../modules/NotFoundContent';
+import { NotFoundPage } from '../modules/NotFoundPage';
 
 export default function Page404() {
-  return <NotFoundContent />;
+  return <NotFoundPage />;
 }

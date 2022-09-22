@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { PostData } from '../../@types/post';
 import PostPage from '../../modules/PostPage';
-import { getPostsBySlug } from '../../services/post';
-import { getAllPosts } from '../../services/posts';
+import { getAllPosts, getPostsBySlug } from '../../services/api';
 
 interface PostProps {
   post: PostData | null;

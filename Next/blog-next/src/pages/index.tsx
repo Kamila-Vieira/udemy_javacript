@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import type { PostData } from '../@types/post';
 import { HomePage } from '../modules/HomePage';
-import { getAllPosts } from '../services/posts';
+import { getAllPosts } from '../services/api';
 
 export interface HomeProps {
   posts: PostData[];

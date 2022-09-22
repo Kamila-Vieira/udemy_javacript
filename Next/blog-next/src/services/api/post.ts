@@ -1,6 +1,6 @@
-import { POSTS_URL } from '../config';
-import type { AllPostsData } from '../@types/posts';
-import { fetchJson } from '../utils/fetchJson';
+import { POSTS_URL } from '../../config';
+import type { AllPostsData } from '../../@types/posts';
+import { fetchJson } from '../../utils/fetchJson';
 
 export async function getPostsBySlug(
   slug: string | string[],
