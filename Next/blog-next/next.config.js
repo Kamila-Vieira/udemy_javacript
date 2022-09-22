@@ -2,13 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  experimental: {
+    forceSwcTransforms: true,
+  },
   images: {
     remotePatterns: [
       {
         hostname: 'res.cloudinary.com',
-      },
-      {
-        hostname: 'api.rlcdn.com',
       },
     ],
   },
