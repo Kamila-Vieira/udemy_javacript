@@ -20,22 +20,24 @@ export default function PostPage({ post: { attributes } }: PostPageProps) {
     '';
 
   return (
-    <Main>
-      <Styled.Container>
-        <Styled.Heading>{title}</Styled.Heading>
+    <>
+      <Main>
+        <Styled.Container>
+          <Styled.Heading>{title}</Styled.Heading>
 
-        <Styled.Cover src={coverSrc} alt={title} />
+          <Styled.Cover src={coverSrc} alt={title} />
 
-        <PostDetails
-          date={formatDate(publishedAt)}
-          author={author.data.attributes.name}
-          category={category.data.attributes.name}
-        />
+          <PostDetails
+            date={formatDate(publishedAt)}
+            author={author.data.attributes.name}
+            category={category.data.attributes.name}
+          />
 
-        <PostContent content={content} />
+          <PostContent content={content} />
 
-        <PostComments title={title} slug={slug} />
-      </Styled.Container>
-    </Main>
+          <PostComments title={title} slug={slug} />
+        </Styled.Container>
+      </Main>
+    </>
   );
 }

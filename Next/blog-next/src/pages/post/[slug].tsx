@@ -1,14 +1,28 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { PostData } from '../../@types/post';
+import { CustomPageHead } from '../../components/CustomPageHead';
+import { SITE_NAME } from '../../config';
 import PostPage from '../../modules/PostPage';
 import { getAllPosts, getPostsBySlug } from '../../services/api';
+import { removeMarkdown } from '../../utils/removeMarkdown';
 
 interface PostProps {
   post: PostData | null;
 }
 
 export default function Post({ post }: PostProps) {
-  return <PostPage post={post} />;
+  const { title, content } = post.attributes;
+
+  return (
+    <>
+      <CustomPageHead
+        title={`${SITE_NAME}: ${title}`}
+        description={`${removeMarkdown(content).slice(0, 150)}`}
+      />
+
+      <PostPage post={post} />
+    </>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -24,8 +38,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const posts = await getPostsBySlug(params.slug);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const posts = await getPostsBySlug(context.params.slug);
   const post = posts.data.length > 0 ? posts.data[0] : null;
 
   return {
