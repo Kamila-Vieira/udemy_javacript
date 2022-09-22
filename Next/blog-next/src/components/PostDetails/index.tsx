@@ -9,8 +9,9 @@ interface PostDetailsProps {
 export function PostDetails({ date, author, category }: PostDetailsProps) {
   return (
     <Styled.Container>
+      Publicado em
       <Styled.Date>{date}</Styled.Date>
-      <Styled.Author>{author}</Styled.Author>
+      por {author} em
       <Styled.Category href="">
         <a>{category}</a>
       </Styled.Category>

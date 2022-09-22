@@ -13,13 +13,7 @@ export function PostCard({ title, slug, cover }: PostCardProps) {
       <Styled.Cover>
         <Link href="post/[slug]" as={`/post/${slug}`}>
           <a>
-            <Styled.CoverImage
-              src={cover}
-              alt={title}
-              width={280}
-              height={200}
-              layout="responsive"
-            />
+            <Styled.Image src={cover} alt={title} />
           </a>
         </Link>
       </Styled.Cover>

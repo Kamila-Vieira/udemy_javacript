@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import Image from 'next/image';
 
 export const Container = styled.div`
   transition: opacity 300ms ease-in-out;
@@ -13,7 +12,7 @@ export const Cover = styled.div`
   margin-bottom: ${({ theme }) => theme.spacings.small};
 `;
 
-export const CoverImage = styled(Image)`
+export const Image = styled.img`
   width: 100%;
   height: auto;
 `;

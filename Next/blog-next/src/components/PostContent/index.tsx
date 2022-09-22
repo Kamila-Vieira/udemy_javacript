@@ -22,7 +22,6 @@ export function PostContent({ content }: PostContentProps) {
           h4: (props) => <Styled.HeadingCommon {...props} />,
           h5: (props) => <Styled.HeadingCommon {...props} />,
           h6: (props) => <Styled.HeadingCommon {...props} />,
-          p: (props) => <Styled.Paragraph {...props} />,
         }}
       >
         {content}

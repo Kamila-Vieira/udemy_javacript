@@ -1,8 +1,21 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.p`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.small};
+    color: ${theme.colors.gray};
+    margin-bottom: ${theme.spacings.medium};
+    font-style: italic;
+  `}
 
-export const Date = styled.span``;
-export const Author = styled.strong``;
+  a {
+    margin: 0 5px;
+  }
+`;
+
+export const Date = styled.span`
+  margin: 0 5px;
+`;
+
 export const Category = styled(Link)``;
