@@ -1,5 +1,5 @@
 import type { PostData } from '../../@types/post';
-import { Main } from '../Main';
+import { MainContainer } from '../../components/MainContainer';
 import * as Styled from './styles';
 import { PostContent } from '../../components/PostContent';
 import { formatDate } from '../../utils/formatDate';
@@ -20,24 +20,22 @@ export default function PostPage({ post: { attributes } }: PostPageProps) {
     '';
 
   return (
-    <>
-      <Main>
-        <Styled.Container>
-          <Styled.Heading>{title}</Styled.Heading>
+    <MainContainer>
+      <Styled.Container>
+        <Styled.Heading>{title}</Styled.Heading>
 
-          <Styled.Cover src={coverSrc} alt={title} />
+        <Styled.Cover src={coverSrc} alt={title} />
 
-          <PostDetails
-            date={formatDate(publishedAt)}
-            author={author.data.attributes.name}
-            category={category.data.attributes.name}
-          />
+        <PostDetails
+          date={formatDate(publishedAt)}
+          author={author.data.attributes.name}
+          category={category.data.attributes.name}
+        />
 
-          <PostContent content={content} />
+        <PostContent content={content} />
 
-          <PostComments title={title} slug={slug} />
-        </Styled.Container>
-      </Main>
-    </>
+        <PostComments title={title} slug={slug} />
+      </Styled.Container>
+    </MainContainer>
   );
 }

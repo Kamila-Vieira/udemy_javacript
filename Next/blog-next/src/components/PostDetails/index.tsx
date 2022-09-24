@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as Styled from './styles';
 
 interface PostDetailsProps {
@@ -12,9 +13,9 @@ export function PostDetails({ date, author, category }: PostDetailsProps) {
       Publicado em
       <Styled.Date>{date}</Styled.Date>
       por {author} em
-      <Styled.Category href="">
+      <Link href="/categories/[category]" as={`/categories/${category}`}>
         <a>{category}</a>
-      </Styled.Category>
+      </Link>
     </Styled.Container>
   );
 }

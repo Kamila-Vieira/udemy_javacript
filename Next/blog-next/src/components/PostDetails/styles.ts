@@ -17,5 +17,3 @@ export const Container = styled.p`
 export const Date = styled.span`
   margin: 0 5px;
 `;
-
-export const Category = styled(Link)``;

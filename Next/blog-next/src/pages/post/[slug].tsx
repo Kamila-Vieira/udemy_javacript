@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { PostData } from '../../@types/post';
 import { CustomPageHead } from '../../components/CustomPageHead';
-import { SITE_NAME } from '../../config';
 import PostPage from '../../modules/PostPage';
 import { getAllPosts, getPostsBySlug } from '../../services/api';
 import { removeMarkdown } from '../../utils/removeMarkdown';
@@ -16,7 +15,7 @@ export default function Post({ post }: PostProps) {
   return (
     <>
       <CustomPageHead
-        title={`${SITE_NAME}: ${title}`}
+        titleComplement={title}
         description={`${removeMarkdown(content).slice(0, 150)}`}
       />
 

@@ -1,9 +1,9 @@
 import * as Style from './styles';
 
-interface MainProps {
+interface MainContainerProps {
   children: React.ReactNode;
 }
 
-export function Main({ children }: MainProps) {
+export function MainContainer({ children }: MainContainerProps) {
   return <Style.Container>{children}</Style.Container>;
 }

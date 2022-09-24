@@ -9,8 +9,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <Header />
       <Component {...pageProps} />
-      <GlobalStyles />
       <Footer />
+      <GlobalStyles />
     </ThemeProvider>
   );
 }

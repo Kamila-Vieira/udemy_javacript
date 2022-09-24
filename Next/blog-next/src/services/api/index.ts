@@ -1,2 +1,3 @@
-export { getAllPosts } from './posts';
-export { getPostsBySlug } from './post';
+export { getAllPosts } from './getAllPosts';
+export { getPostsBySlug } from './getPostsBySlug';
+export { getAllPostsByCategory } from './getAllPostsByCategory';

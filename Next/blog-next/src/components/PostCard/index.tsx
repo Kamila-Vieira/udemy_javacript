@@ -11,7 +11,7 @@ export function PostCard({ title, slug, cover }: PostCardProps) {
   return (
     <Styled.Container>
       <Styled.Cover>
-        <Link href="post/[slug]" as={`/post/${slug}`}>
+        <Link href="/post/[slug]" as={`/post/${slug}`}>
           <a>
             <Styled.Image src={cover} alt={title} />
           </a>
@@ -19,7 +19,7 @@ export function PostCard({ title, slug, cover }: PostCardProps) {
       </Styled.Cover>
 
       <Styled.Heading>
-        <Link href="post/[slug]" as={`/post/${slug}`}>
+        <Link href="/post/[slug]" as={`/post/${slug}`}>
           <a>{title}</a>
         </Link>
       </Styled.Heading>

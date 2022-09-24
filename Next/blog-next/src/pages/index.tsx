@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import type { PostData } from '../@types/post';
 import { CustomPageHead } from '../components/CustomPageHead';
-import { SITE_NAME } from '../config';
 import { HomePage } from '../modules/HomePage';
 import { getAllPosts } from '../services/api';
 
@@ -12,10 +11,7 @@ export interface HomeProps {
 export default function Home({ posts }: HomeProps) {
   return (
     <>
-      <CustomPageHead
-        title={SITE_NAME}
-        description="Este é meu blog de estudo de next"
-      />
+      <CustomPageHead description="Este é meu blog de estudo de next" />
 
       <HomePage posts={posts} />
     </>
