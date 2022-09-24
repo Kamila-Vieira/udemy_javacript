@@ -69,13 +69,16 @@ export interface PostData {
   attributes: PostDataAttributes;
 }
 
-export interface PostDataAttributes {
+export interface PostSimpleDataAttributes {
   title: string;
   slug: string;
   content: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+}
+
+export interface PostDataAttributes extends PostSimpleDataAttributes {
   author: PostAuthor;
   category: PostCategory;
   cover: PostCover;
