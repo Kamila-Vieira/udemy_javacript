@@ -10,13 +10,14 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps) {
-  const { title, content } = post.attributes;
-
   return (
     <>
       <CustomPageHead
-        titleComplement={title}
-        description={`${removeMarkdown(content).slice(0, 150)}`}
+        titleComplement={post?.attributes?.title}
+        description={`${removeMarkdown(post?.attributes?.content).slice(
+          0,
+          150,
+        )}`}
       />
 
       <PostPage post={post} />
@@ -39,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const posts = await getPostsBySlug(context.params.slug);
-  const post = posts.data.length > 0 ? posts.data[0] : null;
+  const post = posts.data.length > 0 ? posts.data[0] : {};
 
   return {
     props: {

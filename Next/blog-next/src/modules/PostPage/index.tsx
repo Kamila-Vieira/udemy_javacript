@@ -10,31 +10,32 @@ interface PostPageProps {
   post: PostData | null;
 }
 
-export default function PostPage({ post: { attributes } }: PostPageProps) {
-  const { title, slug, content, cover, publishedAt, author, category } =
-    attributes;
+export default function PostPage({ post }: PostPageProps) {
   const coverSrc =
-    cover.data.attributes.formats?.large?.url ||
-    cover.data.attributes.formats?.medium?.url ||
-    cover.data.attributes.formats?.small?.url ||
+    post?.attributes?.cover.data.attributes.formats?.large?.url ||
+    post?.attributes?.cover.data.attributes.formats?.medium?.url ||
+    post?.attributes?.cover.data.attributes.formats?.small?.url ||
     '';
 
   return (
     <MainContainer>
       <Styled.Container>
-        <Styled.Heading>{title}</Styled.Heading>
+        <Styled.Heading>{post?.attributes?.title}</Styled.Heading>
 
-        <Styled.Cover src={coverSrc} alt={title} />
+        <Styled.Cover src={coverSrc} alt={post?.attributes?.title} />
 
         <PostDetails
-          date={formatDate(publishedAt)}
-          author={author.data.attributes.name}
-          category={category.data.attributes.name}
+          date={formatDate(post?.attributes?.publishedAt)}
+          author={post?.attributes?.author.data.attributes.name}
+          category={post?.attributes?.category.data.attributes.name}
         />
 
-        <PostContent content={content} />
+        <PostContent content={post?.attributes?.content} />
 
-        <PostComments title={title} slug={slug} />
+        <PostComments
+          title={post?.attributes?.title}
+          slug={post?.attributes?.slug}
+        />
       </Styled.Container>
     </MainContainer>
   );
