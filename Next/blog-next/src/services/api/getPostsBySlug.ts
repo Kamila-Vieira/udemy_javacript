@@ -10,7 +10,7 @@ export async function getPostsBySlug(
 
   const posts = await fetchJson<AllPostsData>(searchURL);
 
-  if (!posts) {
+  if (!posts || !posts?.data) {
     return { data: [], meta: null };
   }
 

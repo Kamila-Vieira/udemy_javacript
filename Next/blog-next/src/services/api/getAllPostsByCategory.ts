@@ -10,7 +10,7 @@ export async function getAllPostsByCategory(
   const searchURL = `${URL}${query}`;
   const posts = await fetchJson<AllPostsData>(searchURL);
 
-  if (!posts) {
+  if (!posts || !posts?.data) {
     return { data: [], meta: null };
   }
 

@@ -7,7 +7,7 @@ export async function getAllPosts(query = ''): Promise<AllPostsData> {
 
   const posts = await fetchJson<AllPostsData>(searchURL);
 
-  if (!posts) {
+  if (!posts || !posts?.data) {
     return { data: [], meta: null };
   }
 
